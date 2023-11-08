@@ -17,13 +17,13 @@ db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
 db.once("open", function(){
 console.log("Connection to DB succeeded")});
 
-var Monitor = require("./models/monitor");
+var monitor = require("./models/monitor");
 
 async function recreateDB()
 {
   // Delete everything
-  await Monitor.deleteMany();
-  let instance1 = new Monitor({model:"Monitor 1", screen_size:24,price:199.99});
+  await monitor.deleteMany();
+  let instance1 = new monitor({model:"Monitor 1", screen_size:24,price:199.99});
   instance1.save().then(doc=>{
   console.log("First object saved")}
   ).catch(err=>{

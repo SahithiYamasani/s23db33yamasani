@@ -4,5 +4,4 @@ const monitorSchema = mongoose.Schema({
     screen_size: Number,
     price: Number
     })
-    module.exports = mongoose.model("monitor",
-    monitorSchema)
+    module.exports = mongoose.model("monitor",monitorSchema)

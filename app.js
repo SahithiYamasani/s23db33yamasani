@@ -17,7 +17,7 @@ db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
 db.once("open", function(){
 console.log("Connection to DB succeeded")});
 
-var monitor = require("./models/monitor");
+var monitor = require("./models/monitorSchema");
 
 async function recreateDB()
 {
@@ -26,6 +26,20 @@ async function recreateDB()
   let instance1 = new monitor({model:"Monitor 1", screen_size:24,price:199.99});
   instance1.save().then(doc=>{
   console.log("First object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+
+  let instance2 = new monitor({model:"Monitor 2", screen_size:24,price:199.99});
+  instance2.save().then(doc=>{
+  console.log("Second object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+
+  let instance3 = new monitor({model:"Monitor 3", screen_size:24,price:199.99});
+  instance3.save().then(doc=>{
+  console.log("Second object saved")}
   ).catch(err=>{
   console.error(err)
   });

@@ -3,14 +3,10 @@ extends layout
 block content
   h1= title
   -
-    const results = [
-      { model: "Monitor 1", screen_size: 24, price: 199.99 },
-      { model: "Monitor 2", screen_size: 27, price: 249.99 },
-      { model: "Monitor 3", screen_size: 32, price: 299.99 }
-    ];
+    const results = result
   .container-fluid
   .row
-    - for (let i = 0; i < results.length; i++)
+    - for (var i = 0; i < results.length; i++)
       .col-sm-2
         h4= results[i].model
         h3(onclick=`buy(${i})`) BUY

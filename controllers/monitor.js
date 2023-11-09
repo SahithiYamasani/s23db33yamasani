@@ -19,3 +19,16 @@ res.send('NOT IMPLEMENTED: Monitor delete DELETE ' + req.params.id);
 exports.monitor_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Monitor update PUT' + req.params.id);
 };
+
+exports.monitor_list = async function(req, res) {
+    try
+    {
+    theMonitors = await monitor.find();
+    res.send(theMonitors);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    

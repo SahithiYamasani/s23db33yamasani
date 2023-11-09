@@ -39,7 +39,7 @@ async function recreateDB()
 
   let instance3 = new monitor({model:"Monitor 3", screen_size:24,price:199.99});
   instance3.save().then(doc=>{
-  console.log("Second object saved")}
+  console.log("Third object saved")}
   ).catch(err=>{
   console.error(err)
   });

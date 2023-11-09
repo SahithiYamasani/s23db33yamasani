@@ -38,7 +38,6 @@ res.send(`{"error": ${err}}`);
 };
 
 // Handle Costume create on POST.
-// Handle Costume create on POST.
 exports.monitor_create_post = async function(req, res) {
 console.log(req.body)
 let document = new monitor();
@@ -58,3 +57,4 @@ res.status(500);
 res.send(`{"error": ${err}}`);
 }
 };
+

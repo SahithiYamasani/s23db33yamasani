@@ -12,9 +12,17 @@ exports.monitor_list = async function(req, res) {
     }
     };
 // for a specific Costume.
-exports.monitor_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: Costume detail: ' + req.params.id);
-};
+// for a specific Costume.
+exports.monitor_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await monitor.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
 
 exports.monitor_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Monitor delete DELETE ' + req.params.id);

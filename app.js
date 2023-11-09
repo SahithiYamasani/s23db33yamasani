@@ -38,6 +38,7 @@ var usersRouter = require('./routes/users');
 var monitorsRouter = require('./routes/monitor');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
+var resourceRouter = require('./routes/resource');
 
 
 // view engine setup
@@ -55,7 +56,7 @@ app.use('/users', usersRouter);
 app.use('/monitor', monitorsRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
-
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

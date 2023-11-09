@@ -1,4 +1,4 @@
-var Costume = require('../models/monitor');
+var monitor = require('../models/monitor');
 // List of all Costumes
 exports.monitor_list = function(req, res) {
 res.send('NOT IMPLEMENTED: Monitor list');

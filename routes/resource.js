@@ -17,4 +17,5 @@ router.put('/monitor/:id', monitor_controller.monitor_update_put);
 router.get('/monitor/:id', monitor_controller.monitor_detail);
 // GET request for list of all Costume items.
 router.get('/monitor', monitor_controller.monitor_list);
+// GET detail costume page 
 module.exports = router;

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  - let monitorid = toShow._id
+  - let monitor_model = toShow.model
+  - let monitorscreen_size = toShow.screen_size
+  - let monitorprice = toShow.price
+
+  div
+    div.row
+      div(class='costumeAttr mr-3') Monitor ID is:
+      div #{monitorid}
+
+    div.row
+      div(class='costumeAttr mr-3') Monitor Type is:
+      div #{monitor_model}
+
+    div.row
+      div(class='costumeAttr mr-3') Monitor Size is:
+      div #{monitorscreen_size}
+
+    div.row
+      div(class='costumeAttr mr-3') Monitor Price is:
+      div #{monitorprice}

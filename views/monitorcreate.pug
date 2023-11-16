@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  form(id='MonitorForm', action="/resource/monitor", method="POST")
+    div.form-group
+      label.costumeAttr(for='monitor_type') Monitor type
+      input#monitor_type(type='text', name='model')
+    div.form-group
+      label.costumeAttr(for='size') Monitor size
+      input#size(type='text', name='screen_size')
+    div.form-group
+      label.costumeAttr(for='cost') Monitor cost
+      input#cost(type='number', name='price')
+    input(type="submit")
+
+    script.
+      document.forms['MonitorForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'POST',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Save succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Save failed " + error)
+        });
+      });

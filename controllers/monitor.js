@@ -24,9 +24,18 @@ exports.monitor_detail = async function(req, res) {
     }
     };
 
-exports.monitor_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Monitor delete DELETE ' + req.params.id);
-};
+exports.monitor_delete = async function(req, res) {
+        console.log("delete " + req.params.id)
+        try {
+        result = await monitor.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+        } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+        }
+        };
+        
 
 // Handle Costume update form on PUT.
 exports.monitor_update_put = async function(req, res) 

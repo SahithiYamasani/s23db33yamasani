@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1= title
+  - let monitorid = toShow._id
+  - let monitor_model = toShow.model
+  - let monitorscreen_size = toShow.screen_size
+  - let monitorprice = toShow.price
+
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{monitorid}
+
+  - let actionid = "/resource/monitor/" + monitorid
+  form(id='MonitorForm', action= actionid, method="PUT")
+    div.form-group
+      label.costumeAttr(for='monitor_model') Monitor model
+      input#monitor_model(type='text', name='monitor_model', value= monitor_model)
+    div.form-group
+      label.costumeAttr(for='monitorscreen_size') Monitor screen size
+      input#monitorscreen_size(type='text', name='monitorscreen_size', value= monitorscreen_size)
+    div.form-group
+      label.costumeAttr(for='monitorprice') Monitor price
+      input#monitorprice(type='number', name='monitorprice', value= monitorprice)
+    input(type="submit")
+
+    script.
+      document.forms['MonitorForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error)
+        });
+      });

@@ -53,6 +53,7 @@ var monitorsRouter = require('./routes/monitor');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourceRouter = require('./routes/resource');
+var monitorssRouter = require('./routes/monitors');
 
 
 // view engine setup
@@ -71,6 +72,7 @@ app.use('/monitor', monitorsRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 app.use('/resource', resourceRouter);
+app.use('/monitors', monitorssRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

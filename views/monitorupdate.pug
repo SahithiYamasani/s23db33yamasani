@@ -7,37 +7,46 @@ block content
   - let monitorscreen_size = toShow.screen_size
   - let monitorprice = toShow.price
 
-  div.row(class='mb-2')
+  div.row.mb-2
     div.mr-1 ID is
     div #{monitorid}
 
   - let actionid = "/resource/monitor/" + monitorid
-  form(id='MonitorForm', action= actionid, method="PUT")
-    div.form-group
-      label.costumeAttr(for='monitor_model') Monitor model
-      input#monitor_model(type='text', name='monitor_model', value= monitor_model)
-    div.form-group
-      label.costumeAttr(for='monitorscreen_size') Monitor screen size
-      input#monitorscreen_size(type='text', name='monitorscreen_size', value= monitorscreen_size)
-    div.form-group
-      label.costumeAttr(for='monitorprice') Monitor price
-      input#monitorprice(type='number', name='monitorprice', value= monitorprice)
-    input(type="submit")
+  .card.mt-4
+    .card-header.bg-primary.text-white Monitor Details
+    .card-body
+      form(id='MonitorForm', action= actionid, method="PUT")
+        div.form-group
+          label.costumeAttr(for='monitor_model' class='form-label') Monitor Model
+          br
+          input#monitor_model(class='form-control', type='text', name='monitor_model', value= monitor_model)
+          br
+        div.form-group
+          label.costumeAttr(for='monitorscreen_size' class='form-label') Monitor Screen Size
+          br
+          input#monitorscreen_size(class='form-control', type='text', name='monitorscreen_size', value= monitorscreen_size)
+          br
+        div.form-group
+          label.costumeAttr(for='monitorprice' class='form-label') Monitor Price
+          br
+          input#monitorprice(class='form-control', type='number', name='monitorprice', value= monitorprice)
+          br
+        input(class='btn btn-primary', type="submit")
 
-    script.
-      document.forms['MonitorForm'].addEventListener('submit', (event) => {
-        event.preventDefault();
-        // TODO do something here to show user that form is being submitted
-        fetch(event.target.action, {
-          method: 'PUT',
-          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-        }).then((resp) => {
-          return resp.json(); // or resp.text() or whatever the server sends
-        }).then((body) => {
-          alert("Update succeeded")
-          // TODO handle body
-        }).catch((error) => {
-          // TODO handle error
-          alert("Update failed " + error)
-        });
+  script.
+    document.forms['MonitorForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error)
       });
+    });

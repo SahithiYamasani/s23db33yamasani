@@ -1,23 +1,34 @@
 extends layout
 
 block content
-  h1= title
-  form(id='MonitorForm', action="/resource/monitor", method="POST")
-    div.form-group
-      label.costumeAttr(for='monitor_type') Monitor type
-      input#monitor_type(type='text', name='model')
-    div.form-group
-      label.costumeAttr(for='size') Monitor size
-      input#size(type='text', name='screen_size')
-    div.form-group
-      label.costumeAttr(for='cost') Monitor cost
-      input#cost(type='number', name='price')
-    input(type="submit")
-
+  div.container
+    h1= title
+    .row
+      .col-md-6
+        .card
+          .card-header Monitor Details
+          .card-body
+            form(id='MonitorForm', action="/resource/monitor", method="POST")
+              div.form-group
+                label.costumeAttr(for='monitor_type' class='form-label') Monitor type
+                br
+                input#monitor_type(class='form-control' type='text', name='model')
+                br
+              div.form-group
+                label.costumeAttr(for='size' class='form-label') Monitor size
+                br
+                input#size(class='form-control' type='text', name='screen_size')
+                br
+              div.form-group
+                label.costumeAttr(for='cost' class='form-label') Monitor cost
+                br
+                input#cost(class='form-control' type='number', name='price')
+                br
+              input(type="submit")
     script.
       document.forms['MonitorForm'].addEventListener('submit', (event) => {
         event.preventDefault();
-        // TODO do something here to show user that form is being submitted
+        // TODO do something here to show the user that the form is being submitted
         fetch(event.target.action, {
           method: 'POST',
           body: new URLSearchParams(new FormData(event.target)) // event.target is the form

@@ -10,12 +10,21 @@ router.get('/', api_controller.api);
 // POST request for creating a Costume.
 //router.post('/monitors', monitor_controller.monitor_create_post);
 // DELETE request to delete Costume.
-router.get('/detail', monitors_controller.monitor_view_one_Page);
+router.get('/detail',secured, monitors_controller.monitor_view_one_Page);
+
+
+const secured = (req, res, next) => {
+    if (req.user){
+    return next();
+    }
+    res.redirect("/login");
+    }
+
 //* GET create monitor page *
-router.get('/create', monitors_controller.monitor_create_Page)
+router.get('/create',secured, monitors_controller.monitor_create_Page)
 //* GET create update page */
-router.get('/update', monitors_controller.monitor_update_Page);
+router.get('/update',secured, monitors_controller.monitor_update_Page);
 /* GET delete costume page */
-router.get('/delete', monitors_controller.monitor_delete_Page);
+router.get('/delete',secured, monitors_controller.monitor_delete_Page);
 
 module.exports = router;

@@ -3,16 +3,26 @@ extends layout
 block content
   h1= title
   -
-    const results = result
+    const results =  [
+      { model: "Monitor 1", screen_size: 24, price: 199.99 },
+      { model: "Monitor 2", screen_size: 27, price: 249.99 },
+      { model: "Monitor 3", screen_size: 32, price: 299.99 }
+    ];
   .container-fluid
   .row
     - for (var i = 0; i < results.length; i++)
       .col-sm-2
-        - let destination = `dispatch(\"/monitors/update?id=${'655783b17c6d026c42b0c33a'}\")`
+        - let destination = `dispatch(\"/monitors/update?id=${'6567d1ac67d8c595a979f906'}\")`
+        - let create = `dispatch(\"/monitors/create")`
+        - let detail = `dispatch(\"/monitors/detail?id=${'6567d1ac67d8c595a979f906'}\")`
+        - let deleted1 = `dispatch(\"/monitors/delete?id=${'6567d1ac67d8c595a979f906'}\")`
         h4= results[i].model
         p Screen Size: #{results[i].screen_size} inches
         p Price: $#{results[i].price}
         button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="btn-primary ml-1", onclick= create) Create
+        button.btn( class="btn-primary ml-1", onclick= detail) Detail
+        button.btn( class="btn-primary ml-1", onclick= deleted1) Delete
 
   script.
       function dispatch(path) {
